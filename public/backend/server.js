@@ -89,17 +89,17 @@ app.post('/api/generate-palette', async (req, res) => {
             setTimeout(() => reject(new Error('Request timeout after 60 seconds')), 60000);
         });
         
-        // Use KappaNeuro color palette model for color palette generation
-        const fetchPromise = fetch('https://api-inference.huggingface.co/models/KappaNeuro/color-palette', {
+        // Use Stable Diffusion XL model for color palette generation
+        const fetchPromise = fetch('https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0', {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                inputs: text,
+                inputs: `color palette, ${text}, abstract colors, swatches`,
                 parameters: { 
-                    num_inference_steps: 10,
+                    num_inference_steps: 20,
                     guidance_scale: 7.5,
                     width: 512,
                     height: 512

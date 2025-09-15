@@ -1,6 +1,6 @@
 # Color Palette Generator
 
-Generates code editor themes from a prompt by infering the KappaNeuro/color-palette model from Hugging Face. Vibe coded as a showcase, don't use for anything serious.
+Generates code editor themes from a prompt by infering the stabilityai/stable-diffusion-xl-base-1.0 model from Hugging Face. Vibe coded as a showcase, don't use for anything serious.
 
 ## Setup
 
@@ -77,7 +77,7 @@ Generates code editor themes from a prompt by infering the KappaNeuro/color-pale
 
 ## API
 
-This app uses the Hugging Face Inference API with the `KappaNeuro/color-palette` model to generate color palettes from text descriptions.
+This app uses the Hugging Face Inference API with the `stabilityai/stable-diffusion-xl-base-1.0` model to generate color palettes from text descriptions.
 
 ## Requirements
 
