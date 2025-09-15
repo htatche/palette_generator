@@ -20,6 +20,7 @@ class PaletteGenerator {
         this.generateThemeBtn = document.getElementById('generateThemeBtn');
         this.generateVimThemeBtn = document.getElementById('generateVimThemeBtn');
         this.rubyCode = document.getElementById('rubyCode');
+        this.loadingSpinner = document.getElementById('loadingSpinner');
         
         // Layout elements
         this.topPrompt = document.getElementById('topPrompt');
@@ -207,9 +208,11 @@ class PaletteGenerator {
         if (loading) {
             this.textInput.disabled = true;
             this.textInput.placeholder = 'Generating palette...';
+            this.loadingSpinner.style.display = 'flex';
         } else {
             this.textInput.disabled = false;
             this.textInput.placeholder = '';
+            this.loadingSpinner.style.display = 'none';
         }
     }
     

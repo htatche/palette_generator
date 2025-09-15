@@ -22,6 +22,9 @@
     <script src="frontend/theme-generator/vim-theme.js"></script>
     <script src="frontend/code-snippets.js"></script>
     <script src="frontend/palette-generator.js"></script>
+    
+    <!-- Mobile styles loaded last to ensure they override other styles -->
+    <link rel="stylesheet" href="css/mobile.css?v=1">
 </head>
 <body>
     <div class="container">
@@ -45,6 +48,9 @@
                             <div class="typing-demo" id="typingDemo">
                                 <span class="typing-text"></span>
                                 <span class="typing-cursor">|</span>
+                            </div>
+                            <div class="loading-spinner" id="loadingSpinner" style="display: none;">
+                                <div class="spinner"></div>
                             </div>
                         </div>
                     </div>

@@ -342,30 +342,7 @@ button:disabled {
     animation: pulse 1.5s ease-in-out infinite;
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-    .container {
-        padding: 1rem;
-    }
-    
-    header h1 {
-        font-size: 2rem;
-    }
-    
-    .main-layout {
-        flex-direction: column;
-    }
-    
-    .left-panel,
-    .middle-panel,
-    .right-panel {
-        flex: none;
-    }
-    
-    .palette-form {
-        padding: 1.5rem;
-    }
-}
+/* Responsive design handled in mobile.css */
 
 /* Footer styles */
 .main-footer {
@@ -468,4 +445,37 @@ button:disabled {
 
 .code-preview {
     position: relative;
+}
+
+/* Loading spinner styles */
+.loading-spinner {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #e2e8f0;
+    border-top: 2px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.loading-text {
+    font-size: 0.875rem;
+    color: #4a5568;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
