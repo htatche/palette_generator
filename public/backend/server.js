@@ -11,6 +11,29 @@ config.validate();
 const app = express();
 const PORT = config.port;
 
+// Function to generate fallback colors based on text input
+function generateFallbackColors(text) {
+    const colorThemes = {
+        'sunset': ['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7', '#DDA0DD', '#F0E68C', '#FFA07A'],
+        'ocean': ['#006994', '#0080FF', '#00BFFF', '#87CEEB', '#B0E0E6', '#E0F6FF', '#F0F8FF', '#4682B4'],
+        'forest': ['#228B22', '#32CD32', '#90EE90', '#98FB98', '#8FBC8F', '#556B2F', '#6B8E23', '#9ACD32'],
+        'fire': ['#FF4500', '#FF6347', '#FF7F50', '#FFA500', '#FFD700', '#FF8C00', '#DC143C', '#B22222'],
+        'night': ['#191970', '#000080', '#4169E1', '#6495ED', '#87CEEB', '#B0C4DE', '#D3D3D3', '#F5F5F5'],
+        'ruby': ['#DC143C', '#B22222', '#8B0000', '#FF6347', '#FF7F50', '#CD5C5C', '#F08080', '#FFB6C1'],
+        'gem': ['#4B0082', '#8A2BE2', '#9370DB', '#BA55D3', '#DA70D6', '#EE82EE', '#DDA0DD', '#F0E68C']
+    };
+    
+    const lowerText = text.toLowerCase();
+    for (const [theme, colors] of Object.entries(colorThemes)) {
+        if (lowerText.includes(theme)) {
+            return colors;
+        }
+    }
+    
+    // Default fallback colors
+    return ['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7', '#DDA0DD', '#F0E68C', '#FFA07A'];
+}
+
 // Function to extract dominant colors from image
 async function extractColors(imageBuffer) {
     try {
@@ -84,9 +107,9 @@ app.post('/api/generate-palette', async (req, res) => {
     try {
         console.log('🚀 Making API call to Hugging Face...');
         
-        // Create a timeout promise
+        // Create a timeout promise (Railway has shorter timeouts)
         const timeoutPromise = new Promise((_, reject) => {
-            setTimeout(() => reject(new Error('Request timeout after 60 seconds')), 60000);
+            setTimeout(() => reject(new Error('Request timeout after 30 seconds')), 30000);
         });
         
         // Use Stable Diffusion XL model for color palette generation
@@ -99,14 +122,14 @@ app.post('/api/generate-palette', async (req, res) => {
             body: JSON.stringify({
                 inputs: `color palette, ${text}, abstract colors, swatches`,
                 parameters: { 
-                    num_inference_steps: 20,
+                    num_inference_steps: 10,
                     guidance_scale: 7.5,
                     width: 512,
                     height: 512
                 },
                 options: {
-                    use_cache: false,
-                    wait_for_model: true
+                    use_cache: true,
+                    wait_for_model: false
                 }
             })
         });
@@ -119,7 +142,8 @@ app.post('/api/generate-palette', async (req, res) => {
         if (!response.ok) {
             const errorText = await response.text();
             console.error('❌ API error response:', errorText);
-            
+            console.error('❌ Response status:', response.status);
+            console.error('❌ Response headers:', response.headers);
             
             return res.status(response.status).json({ error: `API request failed: ${errorText}` });
         }
@@ -145,7 +169,14 @@ app.post('/api/generate-palette', async (req, res) => {
     } catch (error) {
         console.error('❌ Error generating palette:', error);
         if (error.message.includes('timeout')) {
-            res.status(408).json({ error: 'Request timeout - the model is taking too long to respond. Please try again.' });
+            console.log('⏰ Request timed out, providing fallback colors');
+            // Provide fallback colors based on the text input
+            const fallbackColors = generateFallbackColors(text);
+            res.json({ 
+                colors: fallbackColors,
+                imageBlob: null,
+                fallback: true
+            });
         } else {
             res.status(500).json({ error: error.message });
         }
