@@ -1,0 +1,150 @@
+/* Middle Panel - Code Preview & Theme */
+
+/* Theme preview */
+.theme-preview {
+    border-radius: 16px;
+    height: fit-content;
+}
+
+
+.code-preview {
+    border-radius: 8px;
+    padding: 0;
+    margin: 0;
+    overflow-x: auto;
+    max-height: 600px;
+    width: 100%;
+    max-width: 100%;
+}
+
+.code-preview pre {
+    margin: 0;
+    padding: 1.5rem;
+    color: var(--theme-foreground);
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.code-preview code {
+    color: var(--theme-foreground);
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    text-shadow: none !important;
+}
+
+/* Override Prism.js base code color */
+.code-preview code[class*="language-"] {
+    color: var(--theme-foreground) !important;
+    text-shadow: none !important;
+}
+
+/* Override Prism.js colors with our dynamic theme colors */
+.code-preview .token.comment {
+    color: var(--theme-comment) !important;
+    font-style: italic;
+    text-shadow: none !important;
+}
+
+.code-preview .token.keyword {
+    color: var(--theme-keyword) !important;
+    font-weight: bold;
+    text-shadow: none !important;
+}
+
+.code-preview .token.string {
+    color: var(--theme-string) !important;
+    text-shadow: none !important;
+}
+
+.code-preview .token.number {
+    color: var(--theme-number) !important;
+    text-shadow: none !important;
+}
+
+.code-preview .token.class-name {
+    color: var(--theme-class) !important;
+    font-weight: bold;
+    text-shadow: none !important;
+}
+
+.code-preview .token.function {
+    color: var(--theme-function) !important;
+    text-shadow: none !important;
+}
+
+.code-preview .token.variable {
+    color: var(--theme-variable) !important;
+    text-shadow: none !important;
+}
+
+.code-preview .token.operator {
+    color: var(--theme-operator) !important;
+    text-shadow: none !important;
+    background: none !important;
+}
+
+.code-preview .token.punctuation {
+    color: var(--theme-punctuation) !important;
+    text-shadow: none !important;
+}
+
+/* Additional Prism.js Ruby tokens */
+.code-preview .token.builtin {
+    color: var(--theme-builtin) !important;
+    font-weight: bold;
+    text-shadow: none !important;
+}
+
+.code-preview .token.property {
+    color: var(--theme-property) !important;
+    text-shadow: none !important;
+}
+
+.code-preview .token.char {
+    color: var(--theme-char) !important;
+    text-shadow: none !important;
+}
+
+.code-preview .token.regex {
+    color: var(--theme-regex) !important;
+    text-shadow: none !important;
+}
+
+.code-preview .token.symbol {
+    color: var(--theme-symbol) !important;
+    text-shadow: none !important;
+}
+
+.code-preview .token.constant {
+    color: var(--theme-constant) !important;
+    font-weight: bold;
+    text-shadow: none !important;
+}
+
+.code-preview .token.boolean {
+    color: var(--theme-boolean) !important;
+    font-weight: bold;
+    text-shadow: none !important;
+}
+
+/* Responsive adjustments for middle panel */
+@media (max-width: 768px) {
+    .theme-preview {
+        padding: 1.5rem;
+    }
+    
+    .code-preview {
+        max-height: 400px;
+    }
+    
+    .code-preview pre {
+        padding: 1rem;
+        font-size: 0.8rem;
+    }
+}

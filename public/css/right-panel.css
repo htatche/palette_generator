@@ -1,0 +1,110 @@
+/* Right Panel - Palette History */
+
+
+/* History panel styles */
+.history-panel {
+    background: transparent;
+    padding: 0 0 0 1.5rem;
+    height: fit-content;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.palette-history {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.history-item {
+    background: transparent;
+    padding: 0.5rem 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    border-radius: 0;
+}
+
+.history-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+}
+
+.history-item.active {
+    transform: translateX(-0.5rem);
+    transition: transform 0.3s ease;
+}
+
+.history-prompt {
+    font-size: 0.8rem;
+    color: white;
+    margin-bottom: 0.1rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.9), 0 0 8px rgba(0,0,0,0.5);
+    /* Allow text to wrap to multiple lines */
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+.history-palette {
+    display: flex;
+    height: 60px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    width: 100%;
+    position: relative;
+}
+
+.history-color-bar {
+    flex: 1;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+.history-color-bar:hover {
+    transform: scaleY(1.05);
+    z-index: 1;
+    position: relative;
+}
+
+.history-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 0.5rem;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Empty state for history */
+.history-empty {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: #999;
+    font-style: italic;
+}
+
+.history-empty::before {
+    content: "🎨";
+    display: block;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+/* History item timestamp */
+.history-timestamp {
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.9), 0 0 6px rgba(0,0,0,0.4);
+    text-align: left;
+    font-weight: 600;
+}

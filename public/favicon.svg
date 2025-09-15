@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect x="2" y="2" width="28" height="28" rx="6" ry="6" fill="url(#gradient)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+  
+  <!-- Curly braces as text -->
+  <text x="15" y="21" font-family="monospace" font-size="16" font-weight="bold" text-anchor="middle" fill="white" letter-spacing="-2px">{ }</text>
+</svg>

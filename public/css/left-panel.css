@@ -1,0 +1,105 @@
+/* Left Panel - Palette Generation & Display */
+
+/* Selected palette header */
+.selected-palette-header {
+    margin-bottom: 1rem;
+}
+
+.selected-palette-header h3 {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+/* Result container */
+.result-container {
+    margin-bottom: 2rem;
+}
+
+/* Palette display */
+.palette-display {
+    margin-bottom: 2rem;
+}
+
+/* Color palette - horizontal bars */
+.color-palette {
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.color-bar {
+    height: 60px;
+    cursor: pointer;
+    transition: transform 0.2s ease, filter 0.2s ease;
+    position: relative;
+}
+
+.color-bar:hover {
+    transform: scaleY(1.05);
+    filter: brightness(1.1);
+    z-index: 1;
+}
+
+/* Hide old color codes section */
+.color-codes {
+    display: none;
+}
+
+/* Theme actions */
+.theme-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    justify-content: flex-end;
+}
+
+
+.theme-btn {
+    padding: 0.4rem 0.6rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    max-width: 100px;
+    white-space: nowrap;
+}
+
+.theme-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.download-btn {
+    background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+}
+
+.vim-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Responsive adjustments for left panel */
+@media (max-width: 768px) {
+    .result-container {
+        padding: 1.5rem;
+    }
+    
+    .theme-actions {
+        margin-top: 1rem;
+    }
+}
