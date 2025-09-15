@@ -1,17 +1,6 @@
 # Color Palette Generator
 
-A simple Node.js application that generates color palettes from text descriptions using the Hugging Face Inference API.
-
-## Features
-
-- 🎨 Generate color palettes from text descriptions
-- 🖼️ Visual display of generated palettes
-- 📋 Copy color codes to clipboard
-- 🎨 Generate VS Code themes (.vsix files)
-- 🖥️ Generate Vim/Neovim themes (.vim files)
-- 📱 Responsive design
-- ⚡ Fast and lightweight
-- 🚀 No CORS issues (Node.js backend)
+Generates code editor themes from a prompt by infering the KappaNeuro/color-palette model from Hugging Face. Vibe coded as a showcase, don't use for anything serious.
 
 ## Setup
 
@@ -39,14 +28,6 @@ A simple Node.js application that generates color palettes from text description
 
 4. **Open your browser:**
    Navigate to `http://localhost:3000`
-
-## Usage
-
-1. Enter a text description of the color palette you want (e.g., "Sunset over ocean", "Forest in autumn", "Neon cyberpunk")
-2. Click "Generate Palette"
-3. View your generated color palette
-4. Click on any color code to copy it to your clipboard
-5. Generate and download VS Code or Vim/Neovim themes from your palette
 
 ## Theme Installation
 
@@ -97,13 +78,6 @@ A simple Node.js application that generates color palettes from text description
 ## API
 
 This app uses the Hugging Face Inference API with the `KappaNeuro/color-palette` model to generate color palettes from text descriptions.
-
-## Files
-
-- `index.html` - Main HTML structure
-- `script.js` - JavaScript functionality
-- `styles.css` - CSS styling
-- `package.json` - Dependencies and scripts
 
 ## Requirements
 
