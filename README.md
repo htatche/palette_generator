@@ -79,8 +79,3 @@ Generates code editor themes from a prompt by infering the stabilityai/stable-di
 
 This app uses the Hugging Face Inference API with the `stabilityai/stable-diffusion-xl-base-1.0` model to generate color palettes from text descriptions.
 
-## Requirements
-
-- Node.js (for npm)
-- Python (for the development server)
-- Hugging Face API token
